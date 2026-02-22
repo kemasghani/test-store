@@ -1,0 +1,80 @@
+/* Core Layout Utilities */
+.section-logo-list {
+    position: relative;
+    z-index: 1;
+    padding-top: calc(var(--padding-block-start) * 0.75);
+    padding-bottom: calc(var(--padding-block-end) * 0.75);
+  }
+  
+  @media screen and (min-width: 750px) {
+    .section-logo-list {
+      padding-top: var(--padding-block-start);
+      padding-bottom: var(--padding-block-end);
+    }
+  }
+  
+  /* Width Control based on section_width schema */
+  .section--page-width .section-logo-list__content {
+    max-width: var(--page-width, 1200px);
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+  
+  .section--full-width .section-logo-list__content {
+    max-width: 100%;
+    padding: 0 1.5rem;
+  }
+  
+  /* Modern CSS Grid Layout injecting variables from Liquid */
+  .logo-list-grid {
+    display: grid;
+    grid-template-columns: repeat(var(--columns-mobile), 1fr);
+    gap: calc(var(--logo-gap) * 0.75); /* Gap is smaller on mobile */
+    align-items: center;
+    justify-items: center;
+  }
+  
+  @media screen and (min-width: 750px) {
+    .logo-list-grid {
+      grid-template-columns: repeat(var(--columns-desktop), 1fr);
+      gap: var(--logo-gap);
+    }
+  }
+  
+  /* Item Styling */
+  .logo-list__item {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .logo-list__link,
+  .logo-list__placeholder {
+    display: block;
+    width: 100%;
+    opacity: var(--logo-opacity);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+  }
+  
+  .logo-list__link:hover {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+  
+  .logo-list__image {
+    max-width: 100%;
+    height: auto;
+    object-fit: contain;
+    max-height: 80px; /* Batasi tinggi maksimum agar seimbang */
+  }
+  
+  /* Fallback SVG styling */
+  .logo-list__placeholder {
+    background-color: rgba(var(--color-foreground), 0.05);
+    height: 60px;
+  }
+  .logo-list__placeholder svg {
+    width: 100%;
+    height: 100%;
+    fill: rgba(var(--color-foreground), 0.5);
+  }

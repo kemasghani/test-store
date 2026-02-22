@@ -1,0 +1,215 @@
+{{ 'section-footer-custom.css' | asset_url | stylesheet_tag }}
+
+<div class="section-background color-{{ section.settings.color_scheme }}"></div>
+
+<footer
+  id="Footer-{{ section.id }}"
+  class="
+    footer
+    section--{{ section.settings.section_width }}
+    color-{{ section.settings.color_scheme }}
+    spacing-style
+  "
+  style="
+    --padding-block-start: max(20px, calc(var(--spacing-scale, 1) * {{ section.settings.padding-block-start }}px));
+    --padding-block-end: max(20px, calc(var(--spacing-scale, 1) * {{ section.settings.padding-block-end }}px));
+  "
+>
+  <div class="footer__wrapper">
+    
+    <div class="footer__blocks">
+      {%- for block in section.blocks -%}
+        {%- case block.type -%}
+          
+          {%- when 'brand_info' -%}
+            <div class="footer__block footer__block--brand" {{ block.shopify_attributes }}>
+              {%- if block.settings.logo != blank -%}
+                {%- assign logo_height = block.settings.logo_width | divided_by: block.settings.logo.aspect_ratio -%}
+                {{ block.settings.logo | image_url: width: 400 | image_tag:
+                  loading: 'lazy',
+                  width: block.settings.logo_width,
+                  height: logo_height,
+                  class: 'footer__logo',
+                  alt: block.settings.logo.alt | default: shop.name | escape
+                }}
+              {%- else -%}
+                <h2 class="footer__logo-text">{{ shop.name }}</h2>
+              {%- endif -%}
+
+              {%- if block.settings.description != blank -%}
+                <div class="footer__description rte">
+                  {{ block.settings.description }}
+                </div>
+              {%- endif -%}
+
+              {%- if block.settings.show_social -%}
+                <ul class="footer__socials" role="list">
+                  <li class="social-item"><a href="#" class="social-link">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-twitter"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"></path></svg>
+                  </a></li>
+                  <li class="social-item"><a href="#" class="social-link social-link--filled">
+                    <svg viewBox="0 0 24 24" fill="currentColor" class="icon icon-facebook"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+                  </a></li>
+                  <li class="social-item"><a href="#" class="social-link">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-instagram"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                  </a></li>
+                  <li class="social-item"><a href="#" class="social-link">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-github"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                  </a></li>
+                </ul>
+              {%- endif -%}
+            </div>
+
+          {%- when 'link_list' -%}
+            <div class="footer__block footer__block--menu" {{ block.shopify_attributes }}>
+              {%- if block.settings.heading != blank -%}
+                <h3 class="footer-block__heading">{{ block.settings.heading }}</h3>
+              {%- endif -%}
+
+              {%- if block.settings.menu != blank -%}
+                <ul class="footer-block__list" role="list">
+                  {%- for link in block.settings.menu.links -%}
+                    <li>
+                      <a href="{{ link.url }}" class="footer-block__link">
+                        {{ link.title }}
+                      </a>
+                    </li>
+                  {%- endfor -%}
+                </ul>
+              {%- endif -%}
+            </div>
+
+        {%- endcase -%}
+      {%- endfor -%}
+    </div>
+
+    <div class="footer__bottom">
+      <div class="footer__copyright">
+        <small class="copyright__content">&copy; {{ 'now' | date: "%Y" }} {{ shop.name }}. All Rights Reserved.</small>
+      </div>
+
+      {%- if section.settings.payment_enable -%}
+        <div class="footer__payment">
+          <ul class="list-payment" role="list">
+            {%- for type in shop.enabled_payment_types -%}
+              <li class="list-payment__item">
+                {{ type | payment_type_svg_tag: class: 'icon icon--full-color' }}
+              </li>
+            {%- endfor -%}
+          </ul>
+        </div>
+      {%- endif -%}
+    </div>
+
+  </div>
+</footer>
+
+{% schema %}
+{
+  "name": "Footer (Custom)",
+  "max_blocks": 5,
+  "settings": [
+    {
+      "type": "select",
+      "id": "section_width",
+      "label": "Section Width",
+      "options": [
+        { "value": "page-width", "label": "Page Width" },
+        { "value": "full-width", "label": "Full Width" }
+      ],
+      "default": "page-width"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color Scheme",
+      "default": "scheme-1"
+    },
+    {
+      "type": "checkbox",
+      "id": "payment_enable",
+      "default": true,
+      "label": "Show payment icons"
+    },
+    {
+      "type": "header",
+      "content": "Padding"
+    },
+    {
+      "type": "range",
+      "id": "padding-block-start",
+      "label": "Top padding",
+      "min": 0, "max": 120, "step": 4, "unit": "px", "default": 60
+    },
+    {
+      "type": "range",
+      "id": "padding-block-end",
+      "label": "Bottom padding",
+      "min": 0, "max": 120, "step": 4, "unit": "px", "default": 60
+    }
+  ],
+  "blocks": [
+    {
+      "type": "brand_info",
+      "name": "Brand Information",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "logo",
+          "label": "Logo image"
+        },
+        {
+          "type": "range",
+          "id": "logo_width",
+          "min": 50, "max": 250, "step": 10, "unit": "px",
+          "label": "Custom logo width",
+          "default": 140
+        },
+        {
+          "type": "richtext",
+          "id": "description",
+          "label": "Description",
+          "default": "<p>We have clothes that suits your style and which you're proud to wear. From women to men.</p>"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_social",
+          "default": true,
+          "label": "Show social media icons"
+        }
+      ]
+    },
+    {
+      "type": "link_list",
+      "name": "Menu Column",
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "default": "Quick links",
+          "label": "Heading"
+        },
+        {
+          "type": "link_list",
+          "id": "menu",
+          "default": "footer",
+          "label": "Menu"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Footer (Custom)",
+      "blocks": [
+        { "type": "brand_info" },
+        { "type": "link_list", "settings": { "heading": "COMPANY" } },
+        { "type": "link_list", "settings": { "heading": "HELP" } },
+        { "type": "link_list", "settings": { "heading": "FAQ" } },
+        { "type": "link_list", "settings": { "heading": "RESOURCES" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

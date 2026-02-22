@@ -1,0 +1,116 @@
+/* Section Spacing Injection */
+.section-newsletter-banner {
+    padding-top: var(--padding-block-start);
+    padding-bottom: var(--padding-block-end);
+  }
+
+.newsletter-banner__heading.h1 {
+    color: white !important;
+}
+  
+  .section--page-width .newsletter-banner__wrapper {
+    background-color: black;
+    max-width: var(--page-width, 1200px);
+    margin: 0 auto;
+  }
+  
+  /* Banner Box Styling */
+  .newsletter-banner__wrapper {
+    background-color: rgb(var(--color-background));
+    color: rgb(var(--color-foreground));
+    border-radius: 24px;
+    padding: 3rem 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+  }
+  
+  @media screen and (min-width: 750px) {
+    .newsletter-banner__wrapper {
+      border-radius: 40px;
+      padding: 5rem 6rem;
+      flex-direction: row;
+      align-items: center;
+      gap: 4rem;
+    }
+    .newsletter-banner__wrapper > *:first-child {
+      flex: 1.5;
+    }
+    .newsletter-banner__wrapper > *:last-child {
+      flex: 1;
+    }
+  }
+  
+  /* Typography */
+  .newsletter-banner__heading {
+    margin: 0;
+    text-transform: uppercase;
+    font-weight: 900;
+    font-size: 20px;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+  }
+  
+  /* Form Container */
+  .newsletter-form__field-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  
+  /* Pill Input Group */
+  .newsletter-form__input-group {
+    position: relative;
+    display: flex;
+    align-items: center;
+    background-color: #FFFFFF; /* Force white based on design */
+    border-radius: 50px;
+    padding: 0.5rem 2rem;
+  }
+  
+  .newsletter-form__input-group .icon-mail {
+    width: 20px;
+    height: 20px;
+    color: #888888;
+    margin-right: 1rem;
+  }
+  
+  .newsletter-form__input {
+    width: 100%;
+    border: none;
+    background: transparent;
+    padding: 1.2rem 0;
+    font-size: 16px;
+    color: #000000;
+    outline: none;
+  }
+  
+  .newsletter-form__input::placeholder {
+    color: #888888;
+  }
+  
+  /* Pill Button */
+  .newsletter-form__button {
+    width: 100%;
+    border: none;
+    background-color: #FFFFFF; /* Force white based on design */
+    color: #000000;
+    font-weight: bold;
+    font-size: 16px;
+    padding: 1.6rem 2rem;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: transform 0.2s ease, background-color 0.2s ease;
+  }
+  
+  .newsletter-form__button:hover {
+    transform: scale(0.98);
+    background-color: #F0F0F0;
+  }
+  
+  /* Messages */
+  .newsletter-form__message {
+    margin-top: 1.5rem;
+    display: block;
+    font-size: 14px;
+  }

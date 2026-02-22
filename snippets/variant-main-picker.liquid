@@ -103,8 +103,7 @@
                   {% liquid
                     assign featured_media = product_option_value.variant.featured_media
 
-                    # If the variant has no featured media, and we have a combined listing product, then fall back to
-                    # using the featured media of the child product that is linked to this option value.
+                    # If the variant has no featured media, and we have a combined listing product...
                     if featured_media == blank and product_option_value.product_url
                       assign featured_media = product_option_value.variant.product.featured_media
                     endif
@@ -115,6 +114,11 @@
                     variant_image: featured_media,
                     mode: 'unscaled'
                   %}
+                  
+                  <svg class="variant-picker__checkmark" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                    <path d="M5 12L10 17L19 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+
                 {% else %}
                   {% if product_option_value.available == true %}
                     <span
@@ -293,5 +297,71 @@
   .variant-picker--right .variant-option {
     text-align: right;
     justify-content: right;
+  }
+  /* --- CUSTOM SWATCH DESIGN (HORIZON 2026) --- */
+  
+  /* Container untuk swatch */
+  .variant-option__button-label--has-swatch {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    /* Ukuran bisa disesuaikan dengan variabel theme kamu */
+    width: 36px; 
+    height: 36px;
+    border-radius: 50%;
+    overflow: hidden; /* Memastikan isi render 'swatch' terpotong menjadi lingkaran */
+    margin-inline-end: 8px; /* Spasi antar warna */
+  }
+
+  /* Memastikan elemen swatch dari snippet internal memenuhi container */
+  .variant-option__button-label--has-swatch .swatch {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+
+  /* Sembunyikan input radio murni dari pandangan, tapi tetap accessible */
+  .variant-option__button-label--has-swatch input[type="radio"] {
+    position: absolute;
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    cursor: pointer;
+    z-index: 2;
+  }
+
+  /* Styling Checkmark SVG bawaan (Hidden default) */
+  .variant-picker__checkmark {
+    position: absolute;
+    width: 15%; /* Ukuran centang relatif terhadap lingkaran */
+    height: 15%;
+    color: #FFFFFF; /* Warna putih seperti di gambar */
+    opacity: 0;
+    transform: scale(0.5);
+    transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.2s ease;
+    pointer-events: none;
+    z-index: 3;
+    /* Optional: Drop shadow tipis agar centang putih tetap terlihat di warna swatch terang */
+    filter: drop-shadow(0px 1px 2px rgba(0,0,0,0.3));
+  }
+
+  /* LOGIKA STATE: Munculkan Checkmark jika input radio di-checked */
+  .variant-option__button-label--has-swatch input[type="radio"]:checked ~ .variant-picker__checkmark {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  /* Opsional: Hover effect tipis (Best Practice UX) */
+  .variant-option__button-label--has-swatch:hover::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.15);
+    pointer-events: none;
   }
 {% endstylesheet %}

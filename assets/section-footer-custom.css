@@ -1,0 +1,172 @@
+/* Container & Padding */
+.footer {
+    padding-top: var(--padding-block-start);
+    padding-bottom: var(--padding-block-end);
+    background-color: rgb(var(--color-background));
+    color: rgb(var(--color-foreground));
+  }
+  
+  .section--page-width .footer__wrapper {
+    max-width: var(--page-width, 1200px);
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+  
+  /* Blocks Grid Layout - The Magic Sauce */
+  .footer__blocks {
+    display: grid;
+    grid-template-columns: 1fr; /* Mobile: Single column */
+    gap: 4rem;
+  }
+  
+  /* Tablet Layout */
+  @media screen and (min-width: 750px) {
+    .footer__blocks {
+      grid-template-columns: repeat(2, 1fr); /* Tablet: 2 columns for menus */
+    }
+    .footer__block--brand {
+      grid-column: span 2; /* Brand section takes full width above menus */
+    }
+  }
+  
+  /* Desktop Layout - Asymmetric Grid */
+  @media screen and (min-width: 990px) {
+    .footer__blocks {
+      /* Brand block dapat 2.5 porsi, sisanya menu dapat masing-masing 1 porsi */
+      grid-template-columns: 2.5fr 1fr 1fr 1fr 1fr; 
+      gap: 2rem;
+    }
+    .footer__block--brand {
+      grid-column: span 1; /* Reset span */
+      padding-right: 4rem; /* Jarak ekstra antara deskripsi dan menu pertama */
+    }
+  }
+  
+  /* Brand Section Styling */
+  .footer__logo, .footer__logo-text {
+    margin: 0 0 2rem;
+    display: block;
+  }
+  .footer__logo-text {
+    font-family: var(--font-heading-family);
+    font-weight: 900;
+    text-transform: uppercase;
+    font-size: 3rem;
+    letter-spacing: -0.02em;
+  }
+  
+  .footer__description {
+    color: rgba(var(--color-foreground), 0.6); /* Subdued text color */
+    line-height: 1.6;
+    font-size: 1.4rem;
+    margin-bottom: 3rem;
+  }
+  
+  /* Social Icons (Circular) */
+  .footer__socials {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.2rem;
+    margin: 0;
+  }
+  
+  .social-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: 1px solid rgba(var(--color-foreground), 0.2);
+    color: rgb(var(--color-foreground));
+    transition: transform 0.2s ease, background-color 0.2s ease;
+  }
+  
+  /* Khusus untuk icon hitam (Facebook di desain) */
+  .social-link--filled {
+    background-color: rgb(var(--color-foreground));
+    color: rgb(var(--color-background));
+    border-color: transparent;
+  }
+  
+  .social-link:hover {
+    transform: translateY(-2px);
+    background-color: rgba(var(--color-foreground), 0.05);
+  }
+  .social-link--filled:hover {
+    background-color: rgba(var(--color-foreground), 0.8);
+  }
+  
+  .social-link .icon {
+    width: 16px;
+    height: 16px;
+  }
+  
+  /* Menu Column Styling */
+  .footer-block__heading {
+    font-size: 1.4rem;
+    font-weight: bold;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 2rem;
+  }
+  
+  .footer-block__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  
+  .footer-block__link {
+    text-decoration: none;
+    color: rgba(var(--color-foreground), 0.6); /* Subdued link color */
+    font-size: 1.4rem;
+    transition: color 0.2s ease;
+  }
+  
+  .footer-block__link:hover {
+    color: rgb(var(--color-foreground)); /* Solid color on hover */
+  }
+  
+  /* Bottom Section (Copyright & Payments) */
+  .footer__bottom {
+    margin-top: 5rem;
+    padding-top: 3rem;
+    border-top: 1px solid rgba(var(--color-foreground), 0.1); /* Thin divider */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+  }
+  
+  @media screen and (min-width: 750px) {
+    .footer__bottom {
+      flex-direction: row;
+      justify-content: space-between; /* Copyright kiri, Payment kanan */
+    }
+  }
+  
+  .copyright__content {
+    color: rgba(var(--color-foreground), 0.6);
+    font-size: 1.3rem;
+  }
+  
+  .list-payment {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+    justify-content: center;
+  }
+  
+  .list-payment__item .icon {
+    width: auto;
+    height: 24px;
+  }
