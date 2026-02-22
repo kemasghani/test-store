@@ -6,86 +6,117 @@
  * or related systems. Please exercise caution as any changes
  * made to this file may be overwritten.
  * ------------------------------------------------------------
- */{
+ */
+{
   "sections": {
-    "hero_jVaWmY": {
-      "type": "hero",
+    "hero_split_stats_axeRTk": {
+      "type": "hero-split-stats",
       "blocks": {
-        "text_YLPk4p": {
-          "type": "text",
-          "name": "t:names.heading",
+        "stat_mYD7yk": {
+          "type": "stat",
           "settings": {
-            "text": "<p>Browse our latest products</p>",
-            "width": "fit-content",
-            "max_width": "normal",
-            "alignment": "left",
-            "type_preset": "h2",
-            "font": "var(--font-body--family)",
-            "font_size": "1rem",
-            "line_height": "normal",
-            "letter_spacing": "normal",
-            "case": "none",
-            "wrap": "pretty",
-            "color": "var(--color-foreground-heading)",
-            "background": false,
-            "background_color": "#00000026",
-            "corner_radius": 0,
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {}
+            "number": "200+",
+            "label": "International Brands"
+          }
         },
-        "button_H9gpTf": {
-          "type": "button",
-          "name": "t:names.button",
+        "stat_c766YP": {
+          "type": "stat",
           "settings": {
-            "label": "Shop all",
-            "link": "shopify://collections/all",
-            "open_in_new_tab": false,
-            "style_class": "button-secondary",
-            "width": "fit-content",
-            "custom_width": 100,
-            "width_mobile": "fit-content",
-            "custom_width_mobile": 100
-          },
-          "blocks": {}
+            "number": "2,000+",
+            "label": "High-Quality Products"
+          }
+        },
+        "stat_be7mzj": {
+          "type": "stat",
+          "settings": {
+            "number": "30,000+",
+            "label": "Happy Customers"
+          }
         }
       },
       "block_order": [
-        "text_YLPk4p",
-        "button_H9gpTf"
+        "stat_mYD7yk",
+        "stat_c766YP",
+        "stat_be7mzj"
       ],
-      "name": "t:names.hero",
+      "name": "Hero Split with Stats",
       "settings": {
-        "media_type_1": "image",
-        "media_type_2": "image",
-        "stack_media_on_mobile": false,
-        "custom_mobile_media": false,
-        "media_type_1_mobile": "image",
-        "media_type_2_mobile": "image",
-        "open_in_new_tab": false,
-        "content_direction": "column",
-        "vertical_on_mobile": true,
-        "horizontal_alignment": "space-between",
-        "vertical_alignment": "flex-end",
-        "align_baseline": true,
-        "horizontal_alignment_flex_direction_column": "center",
-        "vertical_alignment_flex_direction_column": "flex-end",
-        "gap": 24,
-        "section_width": "page-width",
-        "section_height": "medium",
-        "section_height_custom": 50,
-        "color_scheme": "scheme-6",
-        "toggle_overlay": true,
-        "overlay_color": "#12121266",
-        "overlay_style": "solid",
-        "gradient_direction": "to bottom",
-        "blurred_reflection": false,
-        "reflection_opacity": 75,
-        "padding-block-start": 100,
-        "padding-block-end": 72
+        "image": "shopify://shop_images/1771658300723.png",
+        "heading": "FIND CLOTHES\nTHAT MATCHES\nYOUR STYLE",
+        "text": "<p>Browse through our diverse range of meticulously crafted garments, designed to bring out your individuality and cater to your sense of style.</p>",
+        "button_label": "Shop Now",
+        "button_link": "",
+        "text_color": "#000000",
+        "button_bg_color": "#000000",
+        "button_text_color": "#ffffff",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
+    "logo_list_4PfTrY": {
+      "type": "logo-list",
+      "blocks": {
+        "logo_TJJMRM": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/IMG_20260221_152956.jpg",
+            "link": "",
+            "title": ""
+          }
+        },
+        "logo_E4WkyY": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/IMG_20260221_152852.jpg",
+            "link": "",
+            "title": ""
+          }
+        },
+        "logo_WxiUdq": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/IMG_20260221_153025.jpg",
+            "link": "",
+            "title": ""
+          }
+        },
+        "logo_ha3Anc": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/IMG_20260221_152933.jpg",
+            "link": "",
+            "title": ""
+          }
+        },
+        "logo_RqGaJa": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/IMG_20260221_152916.jpg",
+            "link": "",
+            "title": ""
+          }
+        }
+      },
+      "block_order": [
+        "logo_TJJMRM",
+        "logo_E4WkyY",
+        "logo_WxiUdq",
+        "logo_ha3Anc",
+        "logo_RqGaJa"
+      ],
+      "name": "Brand Logo List",
+      "settings": {
+        "heading": "",
+        "heading_alignment": "center",
+        "section_width": "full-width",
+        "color_scheme": "scheme-5",
+        "max_logos": 5,
+        "columns_desktop": 5,
+        "mobile_columns": "3",
+        "gap": 32,
+        "logo_opacity": 100,
+        "padding-block-start": 48,
+        "padding-block-end": 48
       }
     },
     "product_list_fa6P9H": {
@@ -281,10 +312,65 @@
         "padding-block-start": 48,
         "padding-block-end": 48
       }
+    },
+    "browse_by_style_QRVTfG": {
+      "type": "browse-by-style",
+      "blocks": {
+        "collection_nJdBDz": {
+          "type": "collection",
+          "settings": {
+            "collection": "casual",
+            "image": "shopify://shop_images/ChatGPT_Image_Feb_21_2026_07_33_42_PM.png",
+            "title": ""
+          }
+        },
+        "collection_QitTG7": {
+          "type": "collection",
+          "settings": {
+            "collection": "formal",
+            "image": "shopify://shop_images/ChatGPT_Image_Feb_21_2026_07_33_35_PM.png",
+            "title": ""
+          }
+        },
+        "collection_VnzFeE": {
+          "type": "collection",
+          "settings": {
+            "collection": "party",
+            "image": "shopify://shop_images/ChatGPT_Image_Feb_21_2026_07_47_05_PM.png",
+            "title": ""
+          }
+        },
+        "collection_gigCxg": {
+          "type": "collection",
+          "settings": {
+            "collection": "gym",
+            "image": "shopify://shop_images/ChatGPT_Image_Feb_21_2026_07_48_48_PM.png",
+            "title": ""
+          }
+        }
+      },
+      "block_order": [
+        "collection_nJdBDz",
+        "collection_QitTG7",
+        "collection_VnzFeE",
+        "collection_gigCxg"
+      ],
+      "name": "Browse by Style (Bento)",
+      "settings": {
+        "heading": "BROWSE BY DRESS STYLE",
+        "section_width": "page-width",
+        "color_scheme": "",
+        "container_color_scheme": "",
+        "gap": 24,
+        "padding-block-start": 48,
+        "padding-block-end": 48
+      }
     }
   },
   "order": [
-    "hero_jVaWmY",
-    "product_list_fa6P9H"
+    "hero_split_stats_axeRTk",
+    "logo_list_4PfTrY",
+    "product_list_fa6P9H",
+    "browse_by_style_QRVTfG"
   ]
 }
